@@ -44,7 +44,7 @@ export class CreateTransactionComponent implements OnInit {
         { value: 'EUR', viewValue: 'EUR' },
         { value: 'INR', viewValue: 'INR' },
         { value: 'GBP', viewValue: 'GBP' },
-        { value: 'USD', viewValue: 'USG' },
+        { value: 'USD', viewValue: 'USD' },
     ]
 
   	constructor(
