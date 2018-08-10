@@ -7,7 +7,7 @@
 	$warn: map-get($theme, warn);
 
 	.txn-list-container {
-		background: mat-color($accent, 300);
+		background: linear-gradient(to bottom right, mat-color($accent, 300), mat-color($accent, 600));
 		.txn-list {
 			width: 100%; margin-top: 10px;
 			.txn-table-container {
