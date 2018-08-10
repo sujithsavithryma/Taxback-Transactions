@@ -13,7 +13,7 @@
 		background: mat-color($primary);
 		height: 100px;
 		h3 {
-			font-size: 2.5rem;
+			font-size: 6vw;
 			word-break: break-all;
 		    text-align: center;
 			color: $light-primary-text;
@@ -30,6 +30,8 @@
 			color: mat-color($primary, 600);
 			word-break: break-all;
 		    text-align: center;
+		    margin: 0;
+		    font-size: 3.5vw;
 		}
 		label {
 			color: mat-color($primary, 900);

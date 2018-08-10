@@ -49,7 +49,7 @@ export class TransactionsListComponent implements OnInit {
     */
   	createTransaction(): void {
 	    const dialogRef = this.dialog.open(CreateTransactionComponent, {
-	      width: '60%'
+	      width: '90%'
 	    });
 
 	    dialogRef.afterClosed().subscribe(result => {
@@ -62,7 +62,7 @@ export class TransactionsListComponent implements OnInit {
     */
 	viewTransaction(transaction: Transactions): void {
 	    const dialogRef = this.dialog.open(ViewTransactionComponent, {
-	      width: '60%',
+	      width: '90%',
 	      data: transaction
 	    });
 
@@ -74,7 +74,7 @@ export class TransactionsListComponent implements OnInit {
     */
     editTransaction(transaction: Transactions): void {
         const dialogRef = this.dialog.open(CreateTransactionComponent, {
-          width: '60%',
+          width: '90%',
           data: transaction
         });
 
@@ -93,7 +93,7 @@ export class TransactionsListComponent implements OnInit {
     */
     deleteTransaction(transaction: Transactions): void {
         const dialogRef = this.dialog.open(ConfirmBoxComponent, {
-          width: '40%',
+          width: '50%',
           data: transaction
         });
 

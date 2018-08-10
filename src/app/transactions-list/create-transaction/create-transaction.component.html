@@ -27,7 +27,7 @@
 		</mat-form-field>
        
 
-        <div fxLayout="row">
+        <div fxLayout="row" fxLayout.lt-sm="column">
         	<button type="button"  mat-button (click)="cancel()" >Cancel</button>
         	<span style="width: 100%;"></span>
         	<button type="submit" [disabled]="!transactionAddForm.valid" mat-raised-button class="submit" color="primary">Save</button>

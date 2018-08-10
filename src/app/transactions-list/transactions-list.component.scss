@@ -10,10 +10,9 @@
 	}
 	mat-card {
 		padding: 0 !important;
-		// min-width: 460px;
 	}
 	mat-card-header {
-		padding: 20px 10px;
+		padding: 20px;
 		background: mat-color($accent, 600);
 		color: $light-primary-text;
 	}
@@ -26,10 +25,15 @@
 	}
 	mat-card-content {
 		padding: 20px;
+		td.mat-cell {
+			word-break: break-all;
+			padding: 5px;
+		}
+		th.mat-header-cell {
+			padding: 5px;
+		}
 	}
 	.txn-user-holder {
-		// height: 30px;
-		// background: mat-color($primary, 600, 0.5);
 		margin: 0 10px 10px 10px !important;
 		width: 100%;
 	}
@@ -37,7 +41,5 @@
 	  font-size: 14px;
 	  width: 100%;
 	}
-	table {
-	  width: 100%;
-	}
+
 }
