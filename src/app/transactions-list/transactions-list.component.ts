@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { TransactionsListService } from './transactions-list.service';
 import { debounceTime } from 'rxjs/operators';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 import { Transactions } from './transactions.model';
+import { TransactionsListService } from './transactions-list.service';
 
 import { CreateTransactionComponent } from './create-transaction/create-transaction.component';
 

@@ -4,6 +4,9 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { Observable } from 'rxjs';
 
+import { TransactionsAddModel } from './transactions.model';
+
+
 @Injectable()
 export class TransactionsListService {
 
@@ -14,5 +17,12 @@ export class TransactionsListService {
   */
   getTransactions(email: string): Observable<any> {
     return this.http.get(`${environment.BASE_URL}${email}`);
+  }
+  /** @description get all transactions by emaild.
+  * @param {string} id email of the user .
+  * @param {transaction} transactions object .
+  */
+  createTransaction(transaction: TransactionsAddModel): Observable<any> {
+  	return this.http.post(`${environment.BASE_URL}${transaction.user}`, transaction);
   }
 }

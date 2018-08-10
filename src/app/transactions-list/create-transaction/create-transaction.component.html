@@ -10,18 +10,21 @@
       </ul> -->
       <form [formGroup]="transactionAddForm" (ngSubmit)="createTransaction()">
         
-        <mat-form-field class="width-50">
+        <mat-form-field>
           <input matInput  formControlName="user" placeholder="user">
         </mat-form-field>
-        <mat-form-field class="width-50">
+        <mat-form-field>
           <input matInput type="number" formControlName="amount" placeholder="amount">
         </mat-form-field>
-        <mat-form-field class="width-50">
+        <mat-form-field>
           <input matInput formControlName="currency" placeholder="currency">
         </mat-form-field>
-        <mat-form-field class="width-50">
-          <input matInput type="date" formControlName="txn_date" placeholder="txn_date">
-        </mat-form-field>
+        <mat-form-field>
+		  <input matInput [matDatepicker]="picker" formControlName="txn_date" placeholder="Choose a date">
+		  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+		  <mat-datepicker #picker></mat-datepicker>
+		</mat-form-field>
+       
 
         <div fxLayout="row">
         	<button type="button"  mat-button (click)="cancel()" >Cancel</button>

@@ -20,6 +20,7 @@
     "@angular/forms": "^6.1.0",
     "@angular/http": "^6.1.0",
     "@angular/material": "^6.4.3",
+    "@angular/material-moment-adapter": "git+https://github.com/angular/material2-moment-adapter-builds.git",
     "@angular/platform-browser": "^6.1.0",
     "@angular/platform-browser-dynamic": "^6.1.0",
     "@angular/router": "^6.1.0",

@@ -16,7 +16,9 @@ import { MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
-
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material'
 
 
 
@@ -38,6 +40,9 @@ const routes: Routes = [
     MatButtonModule,
     MatDialogModule,
     ReactiveFormsModule,
+    MatSnackBarModule,
+    MatNativeDateModule,
+    MatDatepickerModule,
     RouterModule.forChild(routes)
   ],
   declarations: [TransactionsListComponent, CreateTransactionComponent],
