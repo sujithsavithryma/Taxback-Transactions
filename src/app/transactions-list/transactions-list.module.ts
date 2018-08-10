@@ -2,7 +2,10 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
+
 import { TransactionsListComponent } from './transactions-list.component';
+import { CreateTransactionComponent } from './create-transaction/create-transaction.component';
 
 import { TransactionsListService } from './transactions-list.service';
 
@@ -12,6 +15,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { MatDialogModule } from '@angular/material/dialog';
+
 
 
 
@@ -31,9 +36,12 @@ const routes: Routes = [
     MatTableModule,
     MatIconModule,
     MatButtonModule,
+    MatDialogModule,
+    ReactiveFormsModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [TransactionsListComponent],
+  declarations: [TransactionsListComponent, CreateTransactionComponent],
+  entryComponents: [CreateTransactionComponent],
   providers: [TransactionsListService]
 })
 export class TransactionsListModule { }
