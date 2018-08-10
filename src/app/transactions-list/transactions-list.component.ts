@@ -55,5 +55,15 @@ export class TransactionsListComponent implements OnInit {
 	      console.log('The dialog was closed');
 	    });
 	}
+    editTransaction(transaction: Transactions): void {
+        const dialogRef = this.dialog.open(CreateTransactionComponent, {
+          width: '60%',
+          data: transaction
+        });
+
+        dialogRef.afterClosed().subscribe(result => {
+          console.log('The dialog was closed');
+        });
+    }
 
 }

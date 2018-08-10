@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { MatSnackBar } from '@angular/material';
@@ -23,7 +23,8 @@ export class CreateTransactionComponent implements OnInit {
   		public fb: FormBuilder,
   		public snackBar: MatSnackBar,
   		public transactionsService: TransactionsListService,
-    	public dialogRef: MatDialogRef<CreateTransactionComponent>) {
+    	public dialogRef: MatDialogRef<CreateTransactionComponent>,
+      @Inject(MAT_DIALOG_DATA) public data: any) {
   		this.transactionAddForm = this.fb.group({
       		user: ['', Validators.required],
       		amount: ['', Validators.required],
@@ -33,8 +34,16 @@ export class CreateTransactionComponent implements OnInit {
   	}
 
   	ngOnInit() {
+        if (this.data) {
+            this.transactionAddForm.patchValue({
+                user: this.data.user,
+                amount: this.data.amount,
+                currency: this.data.currency,
+                txn_date: this.data.txn_date
+            });
+        }
   	}
-  	/** @description call create method of transactions service
+  	/** @description call create/update method of transactions service
 	 *
 	*/
   	createTransaction(): void {
@@ -42,17 +51,30 @@ export class CreateTransactionComponent implements OnInit {
   			const transactionRequest = new TransactionsAddModel();
 	  		transactionRequest.setTransaction(this.transactionAddForm.value);
 	  		transactionRequest.setTransactionDate(this.transactionAddForm.value.txn_date);
-  			this.transactionsService.createTransaction(transactionRequest)
-  				.subscribe((succes) => {
-  					if (succes.id) {
-  						this.snackBar.open('Transaction added', 'Close', {
-						  duration: 3000
-						});
-						this.dialogRef.close(succes.id);
-  					}
-  				}, (error) => {
-  					console.log(error);
-  				});
+            if (!this.data) {
+      			this.transactionsService.createTransaction(transactionRequest)
+      				.subscribe((succes) => {
+      					if (succes.id) {
+      						this.snackBar.open('Transaction added', 'Close', {
+    						  duration: 3000
+    						});
+    						this.dialogRef.close(succes.id);
+      					}
+      				}, (error) => {
+      					console.log(error);
+      				});
+            } else {
+                this.transactionsService.updateTransaction(this.data.id, transactionRequest)
+                    .subscribe((success) => {
+                        console.log(success);
+                        if (success) {
+                            this.snackBar.open('Transaction Updated', 'Close', {
+                              duration: 3000
+                            });
+                            this.dialogRef.close(success);
+                        }
+                    });
+            }
 
   		}
   	}

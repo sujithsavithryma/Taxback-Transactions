@@ -26,9 +26,16 @@ export class TransactionsListService {
   	return this.http.post(`${environment.BASE_URL}${transaction.user}`, transaction);
   }
   /** @description get single transaction by transaction id.
-  * @param {string} id transaction is .
+  * @param {string} transaction transaction  .
   */
   getTransaction(transaction: Transactions): Observable<any> {
   	return this.http.get(`${environment.BASE_URL}${transaction.user}/${transaction.id}`);
+  }
+  /** @description update single transaction by transaction id.
+  * @param {string} transactionId.
+  * @param {string} transaction.
+  */
+  updateTransaction(transactionId: number, transaction: TransactionsAddModel): Observable<any> {
+    return this.http.post(`${environment.BASE_URL}${transaction.user}/${transactionId}`, transaction);
   }
 }

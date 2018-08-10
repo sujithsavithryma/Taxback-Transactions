@@ -1,6 +1,7 @@
 <mat-card>
     <mat-card-header>
-      <mat-card-title>New Transaction</mat-card-title>
+      <mat-card-title *ngIf="!data">New Transaction</mat-card-title>
+      <mat-card-title *ngIf="data">Edit Transaction</mat-card-title>
       <mat-card-subtitle> </mat-card-subtitle>
     </mat-card-header>
   
@@ -29,7 +30,7 @@
         <div fxLayout="row">
         	<button type="button"  mat-button (click)="cancel()" >Cancel</button>
         	<span style="width: 100%;"></span>
-        	<button type="submit" [disabled]="!transactionAddForm.valid" mat-raised-button class="submit" color="primary">Create</button>
+        	<button type="submit" [disabled]="!transactionAddForm.valid" mat-raised-button class="submit" color="primary">Save</button>
         </div>
 
       </form>
