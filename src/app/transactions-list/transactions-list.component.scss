@@ -4,6 +4,7 @@
 @mixin txn-component-theme($theme) {
 	$primary: map-get($theme, primary);
 	$accent: map-get($theme, accent);
+	$warn: map-get($theme, warn);
 
 	.txn-list-container {
 		background: mat-color($accent, 300);
@@ -40,6 +41,9 @@
 	.mat-form-field {
 	  font-size: 14px;
 	  width: 100%;
+	}
+	.error {
+		color: mat-color($warn);
 	}
 
 }

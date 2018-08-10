@@ -2,29 +2,37 @@
     <mat-card-header>
       <mat-card-title *ngIf="!data">New Transaction</mat-card-title>
       <mat-card-title *ngIf="data">Edit Transaction</mat-card-title>
-      <mat-card-subtitle> </mat-card-subtitle>
     </mat-card-header>
   
     <mat-card-content>
-      <!-- <ul *ngIf="error" style="color:red">
-        <li *ngFor="let e of error"> {{e}}</li>
-      </ul> -->
       <form [formGroup]="transactionAddForm" (ngSubmit)="createTransaction()">
         
         <mat-form-field>
           <input matInput  formControlName="user" placeholder="user">
         </mat-form-field>
+
+        <label class="error">{{ erros?.user }}</label>
+
         <mat-form-field>
           <input matInput type="number" formControlName="amount" placeholder="amount">
         </mat-form-field>
+
+        <label class="error">{{ erros?.amount }}</label>
+
         <mat-form-field>
           <input matInput formControlName="currency" placeholder="currency">
         </mat-form-field>
+
+        <label class="error">{{ erros?.currency }}</label>
+
         <mat-form-field>
+
 		  <input matInput [matDatepicker]="picker" formControlName="txn_date" placeholder="Choose a date">
 		  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-		  <mat-datepicker #picker></mat-datepicker>
+		    <mat-datepicker #picker></mat-datepicker>
 		</mat-form-field>
+
+        <label class="error">{{ erros?.txn_date }}</label>
        
 
         <div fxLayout="row" fxLayout.lt-sm="column">

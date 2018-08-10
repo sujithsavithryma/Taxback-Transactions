@@ -18,6 +18,12 @@ import { TransactionsAddModel } from '../transactions.model';
 export class CreateTransactionComponent implements OnInit {
 
 	transactionAddForm: FormGroup;
+    erros: any = {
+        user: '',
+        amount: '',
+        currency: '',
+        txn_date: ''
+    };
 
   	constructor(
   		public fb: FormBuilder,
@@ -61,7 +67,8 @@ export class CreateTransactionComponent implements OnInit {
     						this.dialogRef.close(succes.id);
       					}
       				}, (error) => {
-      					console.log(error);
+      					console.log(error.error);
+
       				});
             } else {
                 this.txnService.updateTransaction(this.data.id, transactionRequest)
@@ -72,6 +79,11 @@ export class CreateTransactionComponent implements OnInit {
                             });
                             this.dialogRef.close(success);
                         }
+                    }, (error) => {
+                          for (const err of Object.keys(error.error.error)) {
+                                this.erros[err] = error.error.error[err];
+                          }
+
                     });
             }
 
