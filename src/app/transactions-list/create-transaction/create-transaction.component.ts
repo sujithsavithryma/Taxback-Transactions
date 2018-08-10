@@ -1,3 +1,7 @@
+/**
+* CreateTransactionComponent -> used for both create and update a transaction
+* 
+*/
 import { Component, OnInit, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
@@ -58,7 +62,7 @@ export class CreateTransactionComponent implements OnInit {
   	}
 
   	ngOnInit() {
-        if (this.data) {
+        if (this.data) { // if transaction present patch values to formgroup
             this.transactionAddForm.patchValue({
                 user: this.data.user,
                 amount: this.data.amount,
@@ -76,6 +80,7 @@ export class CreateTransactionComponent implements OnInit {
 	  		transactionRequest.setTransaction(this.transactionAddForm.value);
 	  		transactionRequest.setTransactionDate(this.transactionAddForm.value.txn_date);
             if (!this.data) {
+                // create new transaction
       			this.txnService.createTransaction(transactionRequest)
       				.subscribe((succes) => {
       					if (succes.id) {
@@ -89,6 +94,7 @@ export class CreateTransactionComponent implements OnInit {
 
       				});
             } else {
+                // update transaction
                 this.txnService.updateTransaction(this.data.id, transactionRequest)
                     .subscribe((success) => {
                         if (success) {

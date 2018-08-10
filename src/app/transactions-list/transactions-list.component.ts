@@ -1,3 +1,6 @@
+/**
+* TransactionsList component -> List all transactions
+*/
 import { Component, OnInit } from '@angular/core';
 import { debounceTime } from 'rxjs/operators';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';

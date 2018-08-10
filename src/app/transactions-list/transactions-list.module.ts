@@ -4,12 +4,21 @@ import { Routes, RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 
+/**
+* Transactions crud components
+*/
 import { TransactionsListComponent } from './transactions-list.component';
 import { CreateTransactionComponent } from './create-transaction/create-transaction.component';
 import { ViewTransactionComponent } from './view-transaction/view-transaction.component'
 
+/**
+* Transactions services
+*/
 import { TransactionsListService } from './transactions-list.service';
 
+/**
+* 3rd party component module
+*/
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
@@ -23,6 +32,9 @@ import { MatNativeDateModule } from '@angular/material';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatSelectModule } from '@angular/material/select';
 
+/**
+* App core module
+*/
 import { ConfirmBoxModule } from '../core';
 
 const routes: Routes = [
