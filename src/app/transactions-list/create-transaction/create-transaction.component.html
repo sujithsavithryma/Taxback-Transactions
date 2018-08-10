@@ -20,7 +20,11 @@
         <label class="error">{{ erros?.amount }}</label>
 
         <mat-form-field>
-          <input matInput formControlName="currency" placeholder="currency">
+          <mat-select placeholder="currency" formControlName="currency">
+            <mat-option *ngFor="let currency of currencyList" [value]="currency.value">
+              {{ currency.viewValue }}
+            </mat-option>
+          </mat-select>
         </mat-form-field>
 
         <label class="error">{{ erros?.currency }}</label>

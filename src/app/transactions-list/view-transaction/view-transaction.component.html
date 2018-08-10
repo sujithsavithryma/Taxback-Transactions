@@ -1,6 +1,8 @@
-<div class="txn-view-card" fxLayout="row">
+<div class="txn-view-card" fxLayout="row" *ngIf="transaction.id">
+
+
 	
-	<div fxFlex="40" class="txn-card-left" fxLayoutGap="5px" fxLayout="row" fxLayout.lt-sm="column"  fxLayoutAlign="center center">
+	<div fxFlex="40" class="txn-card-left" fxLayoutGap="5px"  fxLayout="row" fxLayout.lt-sm="column"  fxLayoutAlign="center center">
 		<h3>{{ transaction.amount }}</h3><font>{{ transaction.currency }}</font>
 	</div>
 	<div fxFlex="60" class="txn-card-right" fxLayout="column" fxLayoutAlign="center start">
@@ -16,4 +18,8 @@
 	</div>
 
 
+</div>
+
+<div class="txn-view-card" fxLayout="row" fxLayoutAlign="center center" *ngIf="!transaction.id">
+	<div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
 </div>

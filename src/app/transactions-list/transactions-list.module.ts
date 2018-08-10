@@ -21,6 +21,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatSelectModule } from '@angular/material/select';
 
 import { ConfirmBoxModule } from '../core';
 
@@ -47,6 +48,7 @@ const routes: Routes = [
     MatDatepickerModule,
     ConfirmBoxModule,
     MatProgressBarModule,
+    MatSelectModule,
     RouterModule.forChild(routes)
   ],
   declarations: [TransactionsListComponent, CreateTransactionComponent, ViewTransactionComponent],

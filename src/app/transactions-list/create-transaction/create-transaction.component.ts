@@ -9,6 +9,17 @@ import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/materia
 import { TransactionsListService } from '../transactions-list.service';
 import { TransactionsAddModel } from '../transactions.model';
 
+interface DropdownModel {
+    value: string;
+    viewValue: string;
+}
+
+interface TransactionsErrorsModel {
+    user: string;
+    amount: string;
+    currency: string;
+    txn_date: string;
+}
 
 @Component({
   selector: 'app-create-transaction',
@@ -18,12 +29,19 @@ import { TransactionsAddModel } from '../transactions.model';
 export class CreateTransactionComponent implements OnInit {
 
 	transactionAddForm: FormGroup;
-    erros: any = {
+    erros: TransactionsErrorsModel = {
         user: '',
         amount: '',
         currency: '',
         txn_date: ''
     };
+
+    currencyList: DropdownModel[] = [
+        { value: 'EUR', viewValue: 'EUR' },
+        { value: 'INR', viewValue: 'INR' },
+        { value: 'GBP', viewValue: 'GBP' },
+        { value: 'USD', viewValue: 'USG' },
+    ]
 
   	constructor(
   		public fb: FormBuilder,
