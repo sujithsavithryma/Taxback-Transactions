@@ -21,7 +21,6 @@ export class ViewTransactionComponent implements OnInit {
   	ngOnInit() {
   		this.txnService.getTransaction(this.data)
   			.subscribe((transaction) => {
-  				console.log(transaction);
   				this.transaction = transaction;
   			});
   	}
