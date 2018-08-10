@@ -3,14 +3,20 @@
 		<mat-card fxFlex="70" fxFlex.sm="100">
 		  <mat-card-header>
 		    <mat-card-title>Transactions</mat-card-title>
-
+		    <span style="width: 100%;"></span>
+		    
 		  </mat-card-header>
 		  <mat-card-content>
-		  	<div class="txn-user-holder">
+		  	<div class="txn-user-holder" fxLayout="row">
 		  		<mat-form-field>
-			      <input matInput value="priya@gmail.com" (keyup)="getTransactions($event.target.value)" placeholder="enter user ">
+			      <input matInput value="priya@gmail.com"  (keyup)="getTransactions($event.target.value)" placeholder="enter user ">
 			       
 			    </mat-form-field>
+
+			    <button mat-fab color="primary" (click)="view(row)">
+				    <mat-icon aria-label="icon-button with a heart icon">add</mat-icon>
+				</button>
+
 		  	</div>
 
 		    <div fxLayout="column" >
@@ -58,13 +64,13 @@
 				    <mat-cell *matCellDef="let row">
 			            <div class="button-row" >
 			                <button mat-icon-button (click)="view(row)">
-			                    <mat-icon aria-label="Example icon-button with a heart icon">visibility</mat-icon>
-			                  </button>
+			                    <mat-icon aria-label="icon-button with a heart icon">visibility</mat-icon>
+			                 </button>
 			                <button mat-icon-button (click)="edit(row)">
-			                  <mat-icon aria-label="Example icon-button with a heart icon">mode_edit</mat-icon>
+			                  <mat-icon aria-label="icon-button with a heart icon">mode_edit</mat-icon>
 			                </button>
 			                <button mat-icon-button color="warn"  (click)="delete(row)">
-			                  <mat-icon aria-label="Example icon-button with a heart icon">delete</mat-icon>
+			                  <mat-icon aria-label="icon-button with a heart icon">delete</mat-icon>
 			                </button>
 			            </div>
 			        </mat-cell>

@@ -6,7 +6,7 @@
 	$accent: map-get($theme, accent);
 
 	.txn-list-container {
-		background: mat-color($primary, 300);
+		background: mat-color($accent, 300);
 	}
 	mat-card {
 		padding: 0 !important;
@@ -14,8 +14,11 @@
 	}
 	mat-card-header {
 		padding: 20px 10px;
-		background: mat-color($primary, 600);
+		background: mat-color($accent, 600);
 		color: $light-primary-text;
+	}
+	.mat-card-header-text {
+		 margin: auto !important;
 	}
 	.mat-card-title {
 		font-size: 20px !important;
@@ -27,6 +30,8 @@
 	.txn-user-holder {
 		// height: 30px;
 		// background: mat-color($primary, 600, 0.5);
+		margin: 0 10px 10px 10px !important;
+		width: 100%;
 	}
 	.mat-form-field {
 	  font-size: 14px;

@@ -28,15 +28,15 @@ $mat-light-theme-background: (
 @include mat-core();
 
 /* colors */
-$primary : $mat-teal;
-$accent  : $mat-red;
-$warn    : $mat-orange;
+$primary : $mat-light-blue;
+$accent  : $mat-green;
+$warn    : $mat-red;
 $toolbar-font-color : white;
 
 
 /* app color pallet */
 $app-theme-primary: mat-palette($primary);
-$app-theme-accent: mat-palette($accent, A200, A100, A400);
+$app-theme-accent: mat-palette($accent);
 $app-theme-warn: mat-palette($warn);
 
 /* create app theme */
