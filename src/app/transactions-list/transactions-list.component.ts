@@ -68,10 +68,6 @@ export class TransactionsListComponent implements OnInit {
 	      width: '90%',
 	      data: transaction
 	    });
-
-	    dialogRef.afterClosed().subscribe(result => {
-	      console.log('The dialog was closed');
-	    });
 	}
     /** @description open transaction create dialogue box with edit option.
     */

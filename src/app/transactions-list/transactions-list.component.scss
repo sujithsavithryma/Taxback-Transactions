@@ -8,6 +8,13 @@
 
 	.txn-list-container {
 		background: mat-color($accent, 300);
+		.txn-list {
+			width: 100%; margin-top: 10px;
+			.txn-table-container {
+				height: 445px;
+				overflow: auto;
+			}
+		}
 	}
 	mat-card {
 		padding: 0 !important;

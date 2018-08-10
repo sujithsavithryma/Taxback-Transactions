@@ -1,5 +1,5 @@
 <div fxLayout="column" fxLayoutAlign="start center" fxFill class="txn-list-container">
-	<div fxFlex="100" fxLayout="row" fxLayoutAlign="center start" fxLayoutGap="10px" fxLayoutGap.lt-sm="2px" style="width: 100%; margin-top: 10px;" >
+	<div fxFlex="100" fxLayout="row" fxLayoutAlign="center start" fxLayoutGap="10px" fxLayoutGap.lt-sm="2px" class="txn-list">
 		<mat-card fxFlex="70" fxFlex.lt-sm="100">
 		  <mat-card-header>
 		    <mat-card-title>Transactions</mat-card-title>
@@ -21,7 +21,7 @@
 
 		  	</div>
 
-		    <div fxLayout="column" fxLayout.lt-sm="row" style="height: 445px;overflow: scroll;">
+		    <div fxLayout="column" fxLayout.lt-sm="row" class="txn-table-container">
 
 		 		<mat-progress-bar mode="indeterminate" *ngIf="loading"></mat-progress-bar>
 
