@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { Observable } from 'rxjs';
 
-import { TransactionsAddModel } from './transactions.model';
+import { TransactionsAddModel, Transactions } from './transactions.model';
 
 
 @Injectable()
@@ -24,5 +24,11 @@ export class TransactionsListService {
   */
   createTransaction(transaction: TransactionsAddModel): Observable<any> {
   	return this.http.post(`${environment.BASE_URL}${transaction.user}`, transaction);
+  }
+  /** @description get single transaction by transaction id.
+  * @param {string} id transaction is .
+  */
+  getTransaction(transaction: Transactions): Observable<any> {
+  	return this.http.get(`${environment.BASE_URL}${transaction.user}/${transaction.id}`);
   }
 }

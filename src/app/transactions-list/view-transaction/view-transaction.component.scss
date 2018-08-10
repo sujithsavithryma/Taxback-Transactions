@@ -1,0 +1,33 @@
+// Import theme and extract parts of it
+@import '~@angular/material/theming';
+
+@mixin txn-view-theme($theme) {
+	$primary: map-get($theme, primary);
+	$accent: map-get($theme, accent);
+
+	.txn-view-card {
+		// padding: 24px !important;
+		border: 1px solid #40a9f4;
+	}
+	.txn-card-left {
+		background: mat-color($primary);
+		height: 100px;
+		h3 {
+			font-size: 2.5rem;
+			color: $light-primary-text;
+		}
+		font {
+			color: $light-primary-text
+		}
+	}
+	.txn-card-right {
+		padding-left: 10px;
+
+		h2 {
+			color: mat-color($primary, 600);
+		}
+		label {
+			color: mat-color($primary, 900);
+		}
+	}
+}

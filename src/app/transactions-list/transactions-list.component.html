@@ -9,7 +9,7 @@
 		  <mat-card-content>
 		  	<div class="txn-user-holder" fxLayout="row">
 		  		<mat-form-field>
-			      <input matInput value="priya@gmail.com"  (keyup)="getTransactions($event.target.value)" placeholder="enter user ">
+			      <input matInput value="sujith@gmail.com"   (keyup)="getTransactions($event.target.value)" placeholder="enter user ">
 			       
 			    </mat-form-field>
 
@@ -63,7 +63,7 @@
 				    <th mat-header-cell *matHeaderCellDef> Actions </th>
 				    <mat-cell *matCellDef="let row">
 			            <div class="button-row" >
-			                <button mat-icon-button (click)="view(row)">
+			                <button mat-icon-button (click)="viewTransaction(row)">
 			                    <mat-icon aria-label="icon-button with a heart icon">visibility</mat-icon>
 			                 </button>
 			                <button mat-icon-button (click)="edit(row)">

@@ -1,0 +1,19 @@
+<div class="txn-view-card" fxLayout="row">
+	
+	<div fxFlex="40" class="txn-card-left" fxLayoutGap="5px" fxLayout="row" fxLayoutAlign="center center">
+		<h3>{{ transaction.amount }}</h3><font>{{ transaction.currency }}</font>
+	</div>
+	<div fxFlex="60" class="txn-card-right" fxLayout="column" fxLayoutAlign="center start">
+			
+			<h2 style="margin: 0">
+				{{ transaction.user }}
+			</h2>
+
+			<label>
+				{{ transaction.txn_date }}
+			</label>
+
+	</div>
+
+
+</div>

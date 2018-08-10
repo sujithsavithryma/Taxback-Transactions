@@ -6,6 +6,7 @@ import { Transactions } from './transactions.model';
 import { TransactionsListService } from './transactions-list.service';
 
 import { CreateTransactionComponent } from './create-transaction/create-transaction.component';
+import { ViewTransactionComponent } from './view-transaction/view-transaction.component'
 
 @Component({
   selector: 'app-transactions-list',
@@ -17,13 +18,12 @@ export class TransactionsListComponent implements OnInit {
 	transactionsList: Transactions[] = [];
 	displayedColumns: string[] = ['id', 'user', 'amount', 'currency', 'txn_date', 'actions'];
 
-
   	constructor(
   		public txnService: TransactionsListService,
   		public dialog: MatDialog) { }
 
   	ngOnInit() {
-  		this.getTransactions('priya@gmail.com');
+  		this.getTransactions('sujith@gmail.com');
   	}
   	getTransactions(email: string): void {
   		this.txnService.getTransactions(email)
@@ -31,7 +31,6 @@ export class TransactionsListComponent implements OnInit {
   				debounceTime(1000)
   			)
   			.subscribe((transactionsList: Transactions[]) => {
-  				console.log(transactionsList);
   				if (transactionsList) {
   					this.transactionsList = [...transactionsList]
   				}
@@ -45,6 +44,16 @@ export class TransactionsListComponent implements OnInit {
 	    dialogRef.afterClosed().subscribe(result => {
 	      console.log('The dialog was closed');
 	    });
-	  }
+	}
+	viewTransaction(transaction: Transactions): void {
+	    const dialogRef = this.dialog.open(ViewTransactionComponent, {
+	      width: '60%',
+	      data: transaction
+	    });
+
+	    dialogRef.afterClosed().subscribe(result => {
+	      console.log('The dialog was closed');
+	    });
+	}
 
 }

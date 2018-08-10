@@ -6,6 +6,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { TransactionsListComponent } from './transactions-list.component';
 import { CreateTransactionComponent } from './create-transaction/create-transaction.component';
+import { ViewTransactionComponent } from './view-transaction/view-transaction.component'
 
 import { TransactionsListService } from './transactions-list.service';
 
@@ -18,7 +19,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatNativeDateModule } from '@angular/material'
+import { MatNativeDateModule } from '@angular/material';
 
 
 
@@ -45,8 +46,8 @@ const routes: Routes = [
     MatDatepickerModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [TransactionsListComponent, CreateTransactionComponent],
-  entryComponents: [CreateTransactionComponent],
+  declarations: [TransactionsListComponent, CreateTransactionComponent, ViewTransactionComponent],
+  entryComponents: [CreateTransactionComponent, ViewTransactionComponent],
   providers: [TransactionsListService]
 })
 export class TransactionsListModule { }
