@@ -101,8 +101,10 @@ export class TransactionsListComponent implements OnInit {
 
         dialogRef.afterClosed().subscribe(result => {
              if (result) {
-                 this.txnService.deleteTransaction(transaction)
+                this.loading = true;
+                this.txnService.deleteTransaction(transaction)
                      .subscribe((res) => {
+                        this.loading = false;
                         if (res) {
                             const index = this.transactionsList.findIndex(x => x.id === transaction.id);
                             this.transactionsList = [
@@ -111,7 +113,9 @@ export class TransactionsListComponent implements OnInit {
                             ];
                             this.snackBar.open('Transaction Deleted', 'Close', { duration: 3000 });
                         }
-                     });
+                    }, (err) => {
+                        this.snackBar.open('Oops Something went wrong', 'Close', { duration: 3000 });
+                    });
              }
         });
     }
