@@ -20,18 +20,21 @@ export class TransactionsListComponent implements OnInit {
 	transactionsList: Transactions[] = [];
 	displayedColumns: string[] = ['id', 'user', 'amount', 'currency', 'txn_date', 'actions'];
 
+    user: string = 'sujith@gmail.com';
+
   	constructor(
   		public txnService: TransactionsListService,
         public snackBar: MatSnackBar,
   		public dialog: MatDialog) { }
 
   	ngOnInit() {
-  		this.getTransactions('sujith@gmail.com');
+  		this.getTransactions(this.user);
   	}
     /** @description get all transactions by emaild.
     * @param {string} id email of the user .
     */
   	getTransactions(email: string): void {
+        this.user = email;
   		this.txnService.getTransactions(email)
   			.pipe(
   				debounceTime(1000)
@@ -50,7 +53,9 @@ export class TransactionsListComponent implements OnInit {
 	    });
 
 	    dialogRef.afterClosed().subscribe(result => {
-	      console.log('The dialog was closed');
+	        if (result) {
+                this.getTransactions(this.user);
+            }
 	    });
 	}
     /** @description open transaction view dialogue box.
@@ -74,7 +79,14 @@ export class TransactionsListComponent implements OnInit {
         });
 
         dialogRef.afterClosed().subscribe(result => {
-          console.log('The dialog was closed');
+            if (result) {
+                const index = this.transactionsList.findIndex(x => x.id === transaction.id);
+                this.transactionsList = [
+                ...this.transactionsList.slice(0, index),
+                result,
+                ...this.transactionsList.slice(index + 1)
+              ];
+            }
         });
     }
     /** @description open transaction delete confirmation box.
@@ -89,8 +101,12 @@ export class TransactionsListComponent implements OnInit {
              if (result) {
                  this.txnService.deleteTransaction(transaction)
                      .subscribe((res) => {
-                         console.log(res);
                         if (res) {
+                            const index = this.transactionsList.findIndex(x => x.id === transaction.id);
+                            this.transactionsList = [
+                                ...this.transactionsList.slice(0, index),
+                                ...this.transactionsList.slice(index + 1)
+                            ];
                             this.snackBar.open('Transaction Deleted', 'Close', { duration: 3000 });
                         }
                      });

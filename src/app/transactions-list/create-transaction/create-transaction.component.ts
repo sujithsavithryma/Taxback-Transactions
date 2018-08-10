@@ -66,7 +66,6 @@ export class CreateTransactionComponent implements OnInit {
             } else {
                 this.txnService.updateTransaction(this.data.id, transactionRequest)
                     .subscribe((success) => {
-                        console.log(success);
                         if (success) {
                             this.snackBar.open('Transaction Updated', 'Close', {
                               duration: 3000
