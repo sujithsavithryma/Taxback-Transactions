@@ -1,0 +1,13 @@
+// Import theme and extract parts of it
+@import '~@angular/material/theming';
+
+@mixin txn-confirm-box-theme($theme) {
+	$warn: map-get($theme, warn);
+
+	.txn-confirm-box {
+		padding: 10px;
+		h3 {
+			text-align: center;;
+		}
+	}
+}

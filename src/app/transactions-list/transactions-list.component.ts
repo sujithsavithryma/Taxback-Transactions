@@ -1,12 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { debounceTime } from 'rxjs/operators';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { MatSnackBar } from '@angular/material';
 
 import { Transactions } from './transactions.model';
 import { TransactionsListService } from './transactions-list.service';
 
 import { CreateTransactionComponent } from './create-transaction/create-transaction.component';
 import { ViewTransactionComponent } from './view-transaction/view-transaction.component'
+import { ConfirmBoxComponent } from '../core';
 
 @Component({
   selector: 'app-transactions-list',
@@ -20,11 +22,15 @@ export class TransactionsListComponent implements OnInit {
 
   	constructor(
   		public txnService: TransactionsListService,
+        public snackBar: MatSnackBar,
   		public dialog: MatDialog) { }
 
   	ngOnInit() {
   		this.getTransactions('sujith@gmail.com');
   	}
+    /** @description get all transactions by emaild.
+    * @param {string} id email of the user .
+    */
   	getTransactions(email: string): void {
   		this.txnService.getTransactions(email)
   			.pipe(
@@ -36,6 +42,8 @@ export class TransactionsListComponent implements OnInit {
   				}
   			});
   	}
+    /** @description open transaction createddialogue box.
+    */
   	createTransaction(): void {
 	    const dialogRef = this.dialog.open(CreateTransactionComponent, {
 	      width: '60%'
@@ -45,6 +53,8 @@ export class TransactionsListComponent implements OnInit {
 	      console.log('The dialog was closed');
 	    });
 	}
+    /** @description open transaction view dialogue box.
+    */
 	viewTransaction(transaction: Transactions): void {
 	    const dialogRef = this.dialog.open(ViewTransactionComponent, {
 	      width: '60%',
@@ -55,6 +65,8 @@ export class TransactionsListComponent implements OnInit {
 	      console.log('The dialog was closed');
 	    });
 	}
+    /** @description open transaction create dialogue box with edit option.
+    */
     editTransaction(transaction: Transactions): void {
         const dialogRef = this.dialog.open(CreateTransactionComponent, {
           width: '60%',
@@ -63,6 +75,26 @@ export class TransactionsListComponent implements OnInit {
 
         dialogRef.afterClosed().subscribe(result => {
           console.log('The dialog was closed');
+        });
+    }
+    /** @description open transaction delete confirmation box.
+    */
+    deleteTransaction(transaction: Transactions): void {
+        const dialogRef = this.dialog.open(ConfirmBoxComponent, {
+          width: '40%',
+          data: transaction
+        });
+
+        dialogRef.afterClosed().subscribe(result => {
+             if (result) {
+                 this.txnService.deleteTransaction(transaction)
+                     .subscribe((res) => {
+                         console.log(res);
+                        if (res) {
+                            this.snackBar.open('Transaction Deleted', 'Close', { duration: 3000 });
+                        }
+                     });
+             }
         });
     }
 

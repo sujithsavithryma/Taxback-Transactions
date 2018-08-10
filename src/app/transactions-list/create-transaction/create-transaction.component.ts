@@ -22,7 +22,7 @@ export class CreateTransactionComponent implements OnInit {
   	constructor(
   		public fb: FormBuilder,
   		public snackBar: MatSnackBar,
-  		public transactionsService: TransactionsListService,
+  		public txnService: TransactionsListService,
     	public dialogRef: MatDialogRef<CreateTransactionComponent>,
       @Inject(MAT_DIALOG_DATA) public data: any) {
   		this.transactionAddForm = this.fb.group({
@@ -52,7 +52,7 @@ export class CreateTransactionComponent implements OnInit {
 	  		transactionRequest.setTransaction(this.transactionAddForm.value);
 	  		transactionRequest.setTransactionDate(this.transactionAddForm.value.txn_date);
             if (!this.data) {
-      			this.transactionsService.createTransaction(transactionRequest)
+      			this.txnService.createTransaction(transactionRequest)
       				.subscribe((succes) => {
       					if (succes.id) {
       						this.snackBar.open('Transaction added', 'Close', {
@@ -64,7 +64,7 @@ export class CreateTransactionComponent implements OnInit {
       					console.log(error);
       				});
             } else {
-                this.transactionsService.updateTransaction(this.data.id, transactionRequest)
+                this.txnService.updateTransaction(this.data.id, transactionRequest)
                     .subscribe((success) => {
                         console.log(success);
                         if (success) {

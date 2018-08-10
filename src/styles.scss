@@ -50,11 +50,14 @@ $app-theme: mat-light-theme($app-theme-primary, $app-theme-accent, $app-theme-wa
 // Import component theme file
 @import 'app/transactions-list/transactions-list.component.scss';
 @import 'app/transactions-list/view-transaction/view-transaction.component.scss';
+@import 'app/core/confirm-box/confirm-box.component.scss';
 
 // Using the $theme variable from the pre-built theme call the theming function
 @include txn-component-theme($app-theme)
 
 @include txn-view-theme($app-theme)
+
+@include txn-confirm-box-theme($app-theme)
 
 
 
