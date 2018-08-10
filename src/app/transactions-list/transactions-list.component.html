@@ -27,7 +27,7 @@
 
 		    	<!-- table start-->
 
-		    	<table  mat-table [dataSource]="transactionsList" >
+		    	<table  mat-table [dataSource]="transactionsList"  >
 
 				  <!--- Note that these columns can be defined in any order.
 				        The actual rendered columns are set as a property on the row definition" -->
@@ -82,9 +82,15 @@
 
 				  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
 				  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
 				</table>
 
 		    	<!-- table ends -->
+
+
+		    	<div *ngIf="transactionsList?.length === 0" class="no-transactions">
+		    		You don't have any transactions yet
+		    	</div>
 
 		    </div>
 

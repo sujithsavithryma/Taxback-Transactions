@@ -52,5 +52,10 @@
 	.error {
 		color: mat-color($warn);
 	}
+	.no-transactions {
+		padding: 10px;
+		color: mat-color($warn, 300);
+		text-align: center;
+	}
 
 }
