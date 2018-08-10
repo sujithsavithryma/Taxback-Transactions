@@ -1,3 +1,89 @@
-<p>
-  transactions-list works!
-</p>
+<div fxLayout="column" fxLayoutAlign="center center" fxFill class="txn-list-container">
+	<div fxFlex="100" fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="10px" style="width: 100%; padding: 20px;">
+		<mat-card fxFlex="70" fxFlex.sm="100">
+		  <mat-card-header>
+		    <mat-card-title>Transactions</mat-card-title>
+
+		  </mat-card-header>
+		  <mat-card-content>
+		  	<div class="txn-user-holder">
+		  		<mat-form-field>
+			      <input matInput value="priya@gmail.com" (keyup)="getTransactions($event.target.value)" placeholder="enter user ">
+			       
+			    </mat-form-field>
+		  	</div>
+
+		    <div fxLayout="column" >
+		
+		    	<!-- table start-->
+
+		    	<table mat-table [dataSource]="transactionsList" class="mat-elevation-z8">
+
+				  <!--- Note that these columns can be defined in any order.
+				        The actual rendered columns are set as a property on the row definition" -->
+
+				  <!-- Id Column -->
+				  <ng-container matColumnDef="id">
+				    <th mat-header-cell *matHeaderCellDef> Id. </th>
+				    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+				  </ng-container>
+
+				  <!-- User Column -->
+				  <ng-container matColumnDef="user">
+				    <th mat-header-cell *matHeaderCellDef> User </th>
+				    <td mat-cell *matCellDef="let element"> {{element.user}} </td>
+				  </ng-container>
+
+				  <!-- Amount Column -->
+				  <ng-container matColumnDef="amount">
+				    <th mat-header-cell *matHeaderCellDef> Amount </th>
+				    <td mat-cell *matCellDef="let element"> {{element.amount}} </td>
+				  </ng-container>
+
+				  <!-- Currency Column -->
+				  <ng-container matColumnDef="currency">
+				    <th mat-header-cell *matHeaderCellDef> Currency </th>
+				    <td mat-cell *matCellDef="let element"> {{element.currency}} </td>
+				  </ng-container>
+
+				  <!-- Transaction Date Column -->
+				  <ng-container matColumnDef="txn_date">
+				    <th mat-header-cell *matHeaderCellDef> Date </th>
+				    <td mat-cell *matCellDef="let element"> {{element.txn_date}} </td>
+				  </ng-container>
+
+				  <!-- Actions Column -->
+				  <ng-container matColumnDef="actions">
+				    <th mat-header-cell *matHeaderCellDef> Actions </th>
+				    <mat-cell *matCellDef="let row">
+			            <div class="button-row" >
+			                <button mat-icon-button (click)="view(row)">
+			                    <mat-icon aria-label="Example icon-button with a heart icon">visibility</mat-icon>
+			                  </button>
+			                <button mat-icon-button (click)="edit(row)">
+			                  <mat-icon aria-label="Example icon-button with a heart icon">mode_edit</mat-icon>
+			                </button>
+			                <button mat-icon-button color="warn"  (click)="delete(row)">
+			                  <mat-icon aria-label="Example icon-button with a heart icon">delete</mat-icon>
+			                </button>
+			            </div>
+			        </mat-cell>
+				  </ng-container>
+
+				  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+				  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+				</table>
+
+		    	<!-- table ends -->
+
+		    </div>
+
+
+		  </mat-card-content>
+		  <!-- <mat-card-actions>
+		    <button mat-button>LIKE</button>
+		    <button mat-button>SHARE</button>
+		  </mat-card-actions> -->
+		</mat-card>
+	</div>
+</div>

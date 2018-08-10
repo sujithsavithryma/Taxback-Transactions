@@ -1,0 +1,38 @@
+// Import theme and extract parts of it
+@import '~@angular/material/theming';
+
+@mixin txn-component-theme($theme) {
+	$primary: map-get($theme, primary);
+	$accent: map-get($theme, accent);
+
+	.txn-list-container {
+		background: mat-color($primary, 300);
+	}
+	mat-card {
+		padding: 0 !important;
+		// min-width: 460px;
+	}
+	mat-card-header {
+		padding: 20px 10px;
+		background: mat-color($primary, 600);
+		color: $light-primary-text;
+	}
+	.mat-card-title {
+		font-size: 20px !important;
+		margin: 0 !important;
+	}
+	mat-card-content {
+		padding: 20px;
+	}
+	.txn-user-holder {
+		// height: 30px;
+		// background: mat-color($primary, 600, 0.5);
+	}
+	.mat-form-field {
+	  font-size: 14px;
+	  width: 100%;
+	}
+	table {
+	  width: 100%;
+	}
+}

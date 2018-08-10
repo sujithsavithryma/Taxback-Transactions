@@ -1,8 +1,56 @@
 /* You can add global styles to this file, and also import other style files */
 
-@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+@import '~@angular/material/theming';
 
 html, body {
 	height: 100%;
 	overflow: hidden;
+	margin: 0;
 }
+/*override mat-light-theme */
+$mat-light-theme-background: (
+  status-bar: map_get($mat-grey, 300),
+  app-bar:    map_get($mat-grey, 100),
+  background: white,
+  hover:      map_get($mat-grey, 100), 
+  card:       white,
+  dialog:     white,
+  disabled-button: $black-12-opacity,
+  raised-button: white,
+  focused-button: $black-6-opacity,
+  selected-button: map_get($mat-grey, 300),
+  selected-disabled-button: map_get($mat-grey, 400),
+  disabled-button-toggle: map_get($mat-grey, 200),
+  unselected-chip: map_get($mat-grey, 300),
+  disabled-list-option: map_get($mat-grey, 200),
+);
+
+@include mat-core();
+
+/* colors */
+$primary : $mat-teal;
+$accent  : $mat-red;
+$warn    : $mat-orange;
+$toolbar-font-color : white;
+
+
+/* app color pallet */
+$app-theme-primary: mat-palette($primary);
+$app-theme-accent: mat-palette($accent, A200, A100, A400);
+$app-theme-warn: mat-palette($warn);
+
+/* create app theme */
+$app-theme: mat-light-theme($app-theme-primary, $app-theme-accent, $app-theme-warn);
+
+/* applay theme */
+@include angular-material-theme($app-theme);
+
+/* style components */
+
+// Import component theme file
+@import 'app/transactions-list/transactions-list.component.scss';
+// Using the $theme variable from the pre-built theme call the theming function
+@include txn-component-theme($app-theme)
+
+
+
