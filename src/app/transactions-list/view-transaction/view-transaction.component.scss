@@ -14,10 +14,13 @@
 		height: 100px;
 		h3 {
 			font-size: 2.5rem;
+			word-break: break-all;
+		    text-align: center;
 			color: $light-primary-text;
 		}
 		font {
-			color: $light-primary-text
+			color: $light-primary-text;
+			padding-right: 10px;
 		}
 	}
 	.txn-card-right {
@@ -25,9 +28,12 @@
 
 		h2 {
 			color: mat-color($primary, 600);
+			word-break: break-all;
+		    text-align: center;
 		}
 		label {
 			color: mat-color($primary, 900);
+
 		}
 	}
 }
