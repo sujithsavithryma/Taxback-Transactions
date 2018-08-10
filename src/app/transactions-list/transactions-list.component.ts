@@ -21,6 +21,7 @@ export class TransactionsListComponent implements OnInit {
 	displayedColumns: string[] = ['id', 'user', 'amount', 'currency', 'txn_date', 'actions'];
 
     user: string = 'sujith@gmail.com';
+    loading: boolean = false;
 
   	constructor(
   		public txnService: TransactionsListService,
@@ -35,13 +36,15 @@ export class TransactionsListComponent implements OnInit {
     */
   	getTransactions(email: string): void {
         this.user = email;
+        this.loading = true;
   		this.txnService.getTransactions(email)
   			.pipe(
   				debounceTime(1000)
   			)
   			.subscribe((transactionsList: Transactions[]) => {
   				if (transactionsList) {
-  					this.transactionsList = [...transactionsList]
+  					this.transactionsList = [...transactionsList];
+                    this.loading = false;
   				}
   			});
   	}

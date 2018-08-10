@@ -6,6 +6,8 @@
 		    <span style="width: 100%;"></span>
 		    
 		  </mat-card-header>
+
+
 		  <mat-card-content>
 		  	<div class="txn-user-holder" fxLayout="row">
 		  		<mat-form-field>
@@ -20,7 +22,9 @@
 		  	</div>
 
 		    <div fxLayout="column" fxLayout.lt-sm="row" style="height: 445px;overflow: scroll;">
-		
+
+		 		<mat-progress-bar mode="indeterminate" *ngIf="loading"></mat-progress-bar>
+
 		    	<!-- table start-->
 
 		    	<table  mat-table [dataSource]="transactionsList" >
